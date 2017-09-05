@@ -1,0 +1,73 @@
+<html>
+<head>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+function setCookie(name, value, expires, path, domain) {
+  var curCookie = name + "=" + escape(value) +
+      ((expires) ? "; expires=" + expires.toGMTString() : "") +
+      ((path) ? "; path=" + path : "") +
+      ((domain) ? "; domain=" + domain : "")
+  document.cookie = curCookie;
+}
+
+
+function getCookie(name) {
+  var dc = document.cookie;
+  var prefix = name + "=";
+  var begin = dc.indexOf("; " + prefix);
+  if (begin == -1) {
+    begin = dc.indexOf(prefix);
+    if (begin != 0) return null;
+  } else
+    begin += 2;
+  var end = document.cookie.indexOf(";", begin);
+  if (end == -1)
+    end = dc.length;
+  return unescape(dc.substring(begin + prefix.length, end));
+}
+
+function deleteCookie(name, path, domain) {
+  if (getCookie(name)) {
+    document.cookie = name + "=" +
+    ((path) ? "; path=" + path : "") +
+    ((domain) ? "; domain=" + domain : "") +
+    "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+  }
+}
+
+// -->
+</SCRIPT>
+</head>
+
+<body>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+// create the current Date
+var now = new Date();
+
+
+//set cookie to expire in 1 year
+now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+var visitCounter = getCookie("counter");
+// no cookie is new visit
+if (!visitCounter) {
+  visitCounter = 1; // the value for the new cookie
+  document.write("This is your first time visiting our page! Welcome! Don't forget to bookmark this page for easy access!!");
+} else {
+  // increase counter
+  visitCounter = parseInt(visitCounter) + 1;
+  document.write("This is your " + visitCounter + " time visiting our site.");
+}
+// set the new cookie
+setCookie("counter", visitCounter, now);
+// -->
+</SCRIPT>
+	
+
+
+
+
+
+</body>
+</html>
